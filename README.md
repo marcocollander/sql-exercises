@@ -6,14 +6,14 @@ Praktycznie każdy serwis (strona) internetowa używa bazy danych, które służ
 
 Istnieje wiele rodzajów baz danych:
 
-* relacyjne
-* nie-relacyjne &mdash; istnieje powiązanie (relacje między danymi)
+- relacyjne
+- nie-relacyjne &mdash; istnieje powiązanie (relacje między danymi)
 
 Nie-relacyjne bazy danych, czyli tak zwane NoSql. Można tu przytoczyć choćby takie nazwy jak:
 
-* MongoDb &mdash; dokumentowa baza danych
+- MongoDb &mdash; dokumentowa baza danych
 
-* Neo4j &mdash; grafowa baza danych
+- Neo4j &mdash; grafowa baza danych
 
 W projektach &bdquo;dość standardowych&rdquo; i charakteryzujących się tym, że dane są zapisywane o tej samej
 strukturze, np. zawsze będą miały tytuł, opis i datę najlepszym wyborem są relacyjne bazy danych.
@@ -53,7 +53,7 @@ jednoznacznie zidentyfikowany. Do tabeli wprowadza się dodatkową, abstrakcyjn�
 rzeczywistych danych) kolumnę identyfikujące każdy wiersz.
 
 Taka kolumna, zawierająca wartość jednoznacznie identyfikującą każdy rekord, nazywana jest kluczem głównym lub
-podstawowym (*ang. primary key*). Ogólnie rzecz biorąc, kluczem można nazwać dowolnie wybrany zestaw kolumn, niemniej
+podstawowym (_ang. primary key_). Ogólnie rzecz biorąc, kluczem można nazwać dowolnie wybrany zestaw kolumn, niemniej
 klucz główny powinien zawsze jednoznacznie identyfikować każdy wiersz tabeli. O tym, która kolumna (lub kolumny) będzie
 kluczem głównym, decyduje programista tworzący bazę. Klucze pozwalają zaś na budowanie powiązań
 (relacji) między tabelami.
@@ -69,24 +69,24 @@ powstanie relacja.
 
 W teorii projektowania relacyjnych baz danych wyróżnia się trzy podstawowe typy relacji:
 
-* jeden do jednego — jednemu rekordowi (wierszowi) z tabeli X odpowiada dokładnie jeden rekord z tabeli Y.
-* jeden do wielu — jednemu rekordowi (wierszowi) z tabeli X może odpowiadać jeden lub więcej rekordów z tabeli Y, ale
+- jeden do jednego — jednemu rekordowi (wierszowi) z tabeli X odpowiada dokładnie jeden rekord z tabeli Y.
+- jeden do wielu — jednemu rekordowi (wierszowi) z tabeli X może odpowiadać jeden lub więcej rekordów z tabeli Y, ale
   jednemu wierszowi z tabeli Y odpowiada dokładnie jeden wiersz z tabeli X.
-* wiele do wielu — jednemu wierszowi z tabeli X może odpowiadać wiele wierszy z tabeli Y oraz jednemu wierszowi z tabeli
+- wiele do wielu — jednemu wierszowi z tabeli X może odpowiadać wiele wierszy z tabeli Y oraz jednemu wierszowi z tabeli
   Y może odpowiadać wiele wierszy z tabeli X.
 
 W przypadku wystąpienia relacji wiele do wielu należy stosować dodatkową tabelę pomocniczą łączącą tabele, między
-którymi relacja występuje. W takiej tabeli wprowadza się klucze główne z tabel, które chcemy powiązać, które 
-są kluczami obcymi, ale łącznie stanowią klucz główny, który jednoznacznie identyfikuje dany wiersz tabeli 
-pomocniczej. Prawidłowe rozwiązanie jest zatem takie jak na rysunku. 
+którymi relacja występuje. W takiej tabeli wprowadza się klucze główne z tabel, które chcemy powiązać, które
+są kluczami obcymi, ale łącznie stanowią klucz główny, który jednoznacznie identyfikuje dany wiersz tabeli
+pomocniczej. Prawidłowe rozwiązanie jest zatem takie jak na rysunku.
 
 ## Jak projektować tabele bazy
 
 <!-- TODO -->
 
 ## Tworzenie i usuwanie baz
-### Łączenie z serwerem
 
+### Łączenie z serwerem
 
 ## Zarzadzanie kontami użytkowników
 
@@ -108,9 +108,9 @@ samo we wszystkich popularnych systemach, w tym także w MySQL.
 
 Występujące w SQL instrukcje można podzielić na trzy grupy:
 
-1. DDL, język definiowania danych(ang. *Data Definition Language*) &mdash; umożliwia definicję struktur danych.
-2. DML, język manipulacji danymi (ang. *Data Manipulation Language*) — umożliwia pobieranie i modyfikowanie danych.
-3. DCL, język kontroli danych (ang.*Data Control Language*) — umożliwia kontrolę dostępu do danych.
+1. DDL, język definiowania danych(ang. _Data Definition Language_) &mdash; umożliwia definicję struktur danych.
+2. DML, język manipulacji danymi (ang. _Data Manipulation Language_) — umożliwia pobieranie i modyfikowanie danych.
+3. DCL, język kontroli danych (ang._Data Control Language_) — umożliwia kontrolę dostępu do danych.
 
 Podstawowe instrukcje należące do DCL zostały przedstawione w rozdziale &bdquo;Podstawy MySQL&rdquo; umożliwiały one
 m.in. zarządzanie kontami użytkowników i kontem administratora.
@@ -121,10 +121,10 @@ W SQL nie są rozróżniane duże i małe litery, można ich więc używać zami
 
 ## Podstawowe zapytania:
 
-* SELECT
-* INSERT
-* UPDATE
-* DELETE
+- SELECT
+- INSERT
+- UPDATE
+- DELETE
 
 ### SELECT &mash; wyciąganie danych
 
@@ -169,16 +169,16 @@ INSERT - dodawanie nowych rekordów: https://dev.mysql.com/doc/refman/8.0/en/ins
 
     UPDATE - aktualizacja rekordów
 
-        UPDATE tbl_name 
+        UPDATE tbl_name
             SET col1={expr1|DEFAULT} [,col2={expr2|DEFAULT}] …
             [WHERE where_condition]
 
         UPDATE t1 SET col1 = col1 + 1, col2 = col1;
-  
-        
+
+
     DELETE - usuwanie rekordów
 
-        DELETE FROM tbl_name 
+        DELETE FROM tbl_name
             [WHERE where_condition]
             [LIMIT row_count]
 
@@ -196,15 +196,15 @@ Występujące w SQL typy danych można podzielić na trzy główne rodzaje:
 
 Typy liczbowe można podzielić na dwa rodzaje:
 
-* typy całkowitoliczbowe
-* typy zmiennoprzecinkowe (zmiennopozycyjnych, rzeczywistych).
+- typy całkowitoliczbowe
+- typy zmiennoprzecinkowe (zmiennopozycyjnych, rzeczywistych).
 
 Typy całkowitoliczbowe zostały przedstawione w tabeli. W każdym z wymienionych przypadków, z wyjątkiem `BOOL`
 i `BOOLEAN`, można zastosować dodatkowy modyfikator określający maksymalną szerokość wyświetlania w
 postaci: `nazwa_typu (ile)`
 
 | Typ       | Zakres warośći                                                                                                                                                         | Liczba zajmowanych bajtów | Opis                                                                                             |
-|-----------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------|--------------------------------------------------------------------------------------------------|
+| --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------- | ------------------------------------------------------------------------------------------------ |
 | BIT       | -                                                                                                                                                                      | zmienna                   | Reprezentuje pola bitowe od 1 do 64 bitów, w wersjach wcześniejszych synonim dla TINYINT (1) .   |
 | BOOL      | -                                                                                                                                                                      | 1                         | Synonim dla TINYINT (1). Wartość 0 jest interpretowana jako false, wartość różna od 0 jako true. |
 | BOOLEAN   | -                                                                                                                                                                      | 1                         | Synonim dla TINYINT (1). Wartość 0 jest interpretowana jako false, wartość różna od 0 jako true. |
@@ -217,8 +217,8 @@ postaci: `nazwa_typu (ile)`
 
 Dozwolone są także modyfikatory:
 
-* *UNSIGNED* oznacza, że wartość ma być traktowana jako liczba bez znaku,
-* *ZEROFILL* oznacza, że jeżeli liczba cyfr w danej wartości jest mniejsza od maksymalnej liczby wyświetlanych znaków,
+- _UNSIGNED_ oznacza, że wartość ma być traktowana jako liczba bez znaku,
+- _ZEROFILL_ oznacza, że jeżeli liczba cyfr w danej wartości jest mniejsza od maksymalnej liczby wyświetlanych znaków,
   wolne miejsca zostaną dopełnione zerami; automatycznie zostanie również zastosowany atrybut `UNSIGNED`.
 
 Przykład
@@ -228,8 +228,8 @@ TINYINT
 UNSIGNED # w kolumnach będzie można zapisywać wartości od 0 do 255
 
 TINYINT(4) ZEROFILL
-# W kolumny można zapisywać wartości od 0 do 255, ale będą one wyświetlane w postaci czteroznakowej, 
-# w której wolne miejsca z lewej strony zostały wypełnione zerami. Oznacza to, że wartość 2 będzie 
+# W kolumny można zapisywać wartości od 0 do 255, ale będą one wyświetlane w postaci czteroznakowej,
+# w której wolne miejsca z lewej strony zostały wypełnione zerami. Oznacza to, że wartość 2 będzie
 # wyświetlana jako 0002, wartość 64 jako 0064, a wartość 128 jako 0128.
 ```
 
@@ -242,7 +242,7 @@ nazwa_typu (mod1 , mod2)
 gdzie mod1 określa szerokość wyświetlania, a mod2 liczbę miejsc uwzględnianych po przecinku.
 
 | Typ              | Zakres warośći                                         | Liczba zajmowanych bajtów | Opis                                                                                                                                                                                                                                                                                                    |
-|------------------|--------------------------------------------------------|---------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ---------------- | ------------------------------------------------------ | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | FLOAT (precyzja) | zmienny                                                | 4 lub 8                   | Parametr precyzja określa precyzję, z jaką będzie reprezentowana dana wartość rzeczywista. W przypadku wartości od 0 do 24 mamy do czynienia z liczbami o pojedynczej precyzji, a w przypadku wartości od 25 do 63 — z liczbami o podwójnej precyzji, co odpowiada opisanym niżej typom FLOAT i DOUBLE. |
 | FLOAT            | od –3.402823466E+38 do 3.402823466E+38                 | 4                         | Liczby zmiennoprzecinkowe pojedynczej precyzji.                                                                                                                                                                                                                                                         |
 | DOUBLE           | od –1.7976931348623157E+308 do 1.7976931348623157E+308 | 8                         | Liczby zmiennoprzecinkowe podwójnej precyzji.                                                                                                                                                                                                                                                           |
@@ -260,23 +260,23 @@ gdzie mod1 określa szerokość wyświetlania, a mod2 liczbę miejsc uwzględnia
 Typy pozwalające na reprezentację daty i czasu zostały zebrane w tabeli. W przypadku typów DATE , DATETIME i TIMESTAMP
 dopuszczalne są formaty:
 
-* Ciąg znaków RRRR-MM-DD GG:MM:SS i RR-MM-DD GG:MM:SS. Pomiędzy składowymi daty oraz pomiędzy składowymi czasu mogą
+- Ciąg znaków RRRR-MM-DD GG:MM:SS i RR-MM-DD GG:MM:SS. Pomiędzy składowymi daty oraz pomiędzy składowymi czasu mogą
   występować dowolne znaki przestankowe. Prawidłowe są zatem zapisy: 2018-05-20 20:12:55 , 2018.05.20 20-12-55 , 2018*
   05*20 20%12%55.
 
-* Ciąg znaków RRRR-MM-DD i YY-MM-DD. Pomiędzy składowymi daty mogą występować dowolne znaki przestankowe. Prawidłowe są
+- Ciąg znaków RRRR-MM-DD i YY-MM-DD. Pomiędzy składowymi daty mogą występować dowolne znaki przestankowe. Prawidłowe są
   zatem zapisy: 2018- 05-20, 2018.05.20, 18*05*20
 
-* Ciąg znaków RRRRMMDDGGMMSS i RRMMDDGGMMSS. Prawidłowe są zatem zapisy: 20180520201255 , 180520201255 — oba
+- Ciąg znaków RRRRMMDDGGMMSS i RRMMDDGGMMSS. Prawidłowe są zatem zapisy: 20180520201255 , 180520201255 — oba
   interpretowane jako 2018-05-20 20:12:55.
 
-* Ciąg znaków RRRRMMDD i RRMMDD. Prawidłowe są zatem zapisy: 20180520, 180520, oba interpretowane jako 2018-05- 20.
+- Ciąg znaków RRRRMMDD i RRMMDD. Prawidłowe są zatem zapisy: 20180520, 180520, oba interpretowane jako 2018-05- 20.
 
-* Wartość liczbowa zapisana jako RRRRMMDDGGMMSS, RRMMDDGGMMSS, RRRRMMDD lub RRMMDD, o ile reprezentuje poprawną datę i (
+- Wartość liczbowa zapisana jako RRRRMMDDGGMMSS, RRMMDDGGMMSS, RRRRMMDD lub RRMMDD, o ile reprezentuje poprawną datę i (
   lub) czas.
 
 | Typ       | Zakres warości                       | Liczba zajmowanych bajtów | Opis                                                                                                                                                     |
-|-----------|--------------------------------------|---------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
+| --------- | ------------------------------------ | ------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | DATE      | Od 1000-01-01 do 9999-12-31.         | 3                         | Typ przeznaczony do reprezentacji daty. Wartości będą pobierane z bazy i wyświetlane w formacie RRRR - MM - DD                                           |
 | DATETIME  | Od 1000-01-01 00:00:00 do 9999-12-31 | 8                         | Typ przeznaczony do reprezentacji daty i czasu. Wartości będą pobierane z bazy i wyświetlane w formacie RRRR - MM - DD GG : MM : SS                      |
 | TIMESTAMP | Zależne od dodatkowych opcji.        | 4                         | Typ przeznaczony do reprezentacji znacznika czasu.                                                                                                       |
@@ -285,23 +285,23 @@ dopuszczalne są formaty:
 
 W przypadku typu TIME dopuszczalne są następujące formaty:
 
-* Ciąg znaków D GG : MM : SS . Ciąg D reprezentuje dni i może przyjmować wartości od 0 do 34. Możliwe są również
+- Ciąg znaków D GG : MM : SS . Ciąg D reprezentuje dni i może przyjmować wartości od 0 do 34. Możliwe są również
   warianty skrócone w następujących postaciach: GG : MM : SS , GG : MM , D GG : MM , D GG i SS . Poprawne są zatem
   zapisy: 12:52:24 , 12:52 , 24 .
 
-* Ciąg znaków GGMMSS. Pomiędzy składowymi nie mogą występować żadne znaki przestankowe, cały ciąg musi zaś reprezentować
+- Ciąg znaków GGMMSS. Pomiędzy składowymi nie mogą występować żadne znaki przestankowe, cały ciąg musi zaś reprezentować
   poprawny czas. Poprawne są zatem zapisy: 125224 (co oznacza 12:52:24), 182931 (co oznacza 18:29:31).
 
-* Wartość liczbowa zapisana jako GGMMSS, o ile reprezentuje poprawny czas. Możliwe są również alternatywne zapisy w
+- Wartość liczbowa zapisana jako GGMMSS, o ile reprezentuje poprawny czas. Możliwe są również alternatywne zapisy w
   postaci: SS, MMSS, GGMMSS
 
 W przypadku typu YEAR dopuszczalne są następujące formaty:
 
-* Ciąg znaków w formacie RRRR. Dopuszczalny zakres to 1901 – 2155.
-* Ciąg znaków w formacie RR. Dopuszczalny zakres to 00 – 99. Ciągi od 00 do 69 są interpretowane jako lata 2000 – 2069,
+- Ciąg znaków w formacie RRRR. Dopuszczalny zakres to 1901 – 2155.
+- Ciąg znaków w formacie RR. Dopuszczalny zakres to 00 – 99. Ciągi od 00 do 69 są interpretowane jako lata 2000 – 2069,
   natomiast ciągi od 70 do 99 jako lata 1970 –1999.
-* Wartość liczbowa w formacie RRRR. Dopuszczalny zakres to 1901 – 2155.
-* Wartość liczbowa w formacie RR. Dopuszczalny zakres to 1 – 99. Wartości od 1 do 69 są interpretowane jako lata 2001 –
+- Wartość liczbowa w formacie RRRR. Dopuszczalny zakres to 1901 – 2155.
+- Wartość liczbowa w formacie RR. Dopuszczalny zakres to 1 – 99. Wartości od 1 do 69 są interpretowane jako lata 2001 –
   2069, natomiast ciągi od 70 do 99 jako lata 1970 – 1999.
 
 ### Typy łańcuchowe
@@ -360,7 +360,7 @@ CREATE TABLE nazwa_tabeli
 
 #### Pierwsza postać instrukcji INSERT
 
-```SQL 
+```SQL
 INSERT [INTO] tabela [( kolumna1 , kolumna2 , ..., kolumnaN )] VALUES ( wartość1 , wartość2 , ..., wartośćN)
 ```
 
@@ -368,7 +368,7 @@ INSERT [INTO] tabela [( kolumna1 , kolumna2 , ..., kolumnaN )] VALUES ( wartoś�
 
 #### Druga postać instrukcji INSERT
 
-```SQL 
+```SQL
 INSERT [INTO] tabela SET kolumna1=wartość1 , kolumna2 = wartość2 , ..., kolumnaN = wartośćN
 ```
 
@@ -382,5 +382,6 @@ INSERT [INTO] tabela SET kolumna1=wartość1 , kolumna2 = wartość2 , ..., kolu
 
 # Tworzenie bazy w praktyce
 
+# PHP i MySQL w praktyce
 
-
+## Autoryzacje
