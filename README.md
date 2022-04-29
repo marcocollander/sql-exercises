@@ -1,28 +1,37 @@
 # sql-exercises
 
-# Podstawy MySQ
+# Podstawy MySQL
 
 Praktycznie każdy serwis (strona) internetowa używa bazy danych, które służą do przechowywania informacji.
 
 Istnieje wiele rodzajów baz danych:
+
 * relacyjne
 * nie-relacyjne &mdash; istnieje powiązanie (relacje między danymi)
 
 Nie-relacyjne bazy danych, czyli tak zwane NoSql. Można tu przytoczyć choćby takie nazwy jak:
+
 * MongoDb &mdash; dokumentowa baza danych
 
 * Neo4j &mdash; grafowa baza danych
 
-W projektach &bdquo;dość standardowych&rdquo; i charakteryzujących się tym, że dane są zapisywane o tej
-samej strukturze, np. zawsze będą miały tytuł, opis i datę najlepszym wyborem są relacyjne bazy danych.
+W projektach &bdquo;dość standardowych&rdquo; i charakteryzujących się tym, że dane są zapisywane o tej samej
+strukturze, np. zawsze będą miały tytuł, opis i datę najlepszym wyborem są relacyjne bazy danych.
 
-Istnieje wiele silników baz relacyjnych. Głównymi graczami na rynku są: MySql, PostgreSql, SqlLite, MSSQL, Oracle.
-Dwie ostatnie to są tak zwane rozwiązania Enterprise i są dość drogie. Natomiast trzy pierwsze są rozwiązaniami darmowymi.
+Istnieje wiele silników baz relacyjnych. Głównymi graczami na rynku są: MySql, PostgreSql, SqlLite, MSSQL, Oracle. Dwie
+ostatnie to są tak zwane rozwiązania Enterprise i są dość drogie. Natomiast trzy pierwsze są rozwiązaniami darmowymi.
 
 MySql jest bardzo popularną bazą danych. Większość ofert pracy dotyczy połączenia PHP i MySQL.
 
-
 ## Czym jest MySQL?
+
+Tworząc serwis internetowy, trzeba wybrać sposób, w jaki będą w nim przechowywane dane. Można przechowywać dane w
+plikach na dyskach. Jest to jednak mało wygodne i mało wydajne wraz ze wzrostem ilości przechowywanych danych. Dlatego
+wykorzystuje się bazy danych i to bazy relacyjne zarządzane systemem RDBMS (ang. Relational Database Management System).
+
+MySQL to system zarządzania bazą danych. To serwer baz danych dostępny m.in. na licencji GPL (dzięki czemu dostępny jest
+nieodpłatnie nawet w zastosowaniach firmowych). Odpowiednią wersję dystrybucyjną
+można [pobrać ze strony producenta](http://www.mysql.com) (należy szukać darmowej wersji Community).
 
 ## Instalacja i konfiguracja
 
@@ -30,9 +39,54 @@ MySql jest bardzo popularną bazą danych. Większość ofert pracy dotyczy poł
 
 ## Koncepcja relacyjnych baz danych
 
+### Tabele
+
+W systemach relacyjnych baz danych (a takim jest MySQL) dane przechowywane są w tabelach. Pomiędzy tymi tabelami (a
+dokładniej pomiędzy danymi w tych tabelach) występują wiążące je relacje. Tabela składa się z wierszy i kolumn. Każdy
+wiersz opisuje jeden rekord (zestaw danych), a kolumna — właściwości danego rekordu.
+
+### Klucze
+
+Podczas projektowania tabeli należy utworzyć taką strukturę kolumn, aby każdy rekord mógł być jednoznacznie
+zidentyfikowany. Podczas projektowania tabeli należy utworzyć taką strukturę kolumn, aby każdy rekord mógł być
+jednoznacznie zidentyfikowany. Do tabeli wprowadza się dodatkową, abstrakcyjną (niemającą odzwierciedlenia w
+rzeczywistych danych) kolumnę identyfikujące każdy wiersz.
+
+Taka kolumna, zawierająca wartość jednoznacznie identyfikującą każdy rekord, nazywana jest kluczem głównym lub
+podstawowym (*ang. primary key*). Ogólnie rzecz biorąc, kluczem można nazwać dowolnie wybrany zestaw kolumn, niemniej
+klucz główny powinien zawsze jednoznacznie identyfikować każdy wiersz tabeli. O tym, która kolumna (lub kolumny) będzie
+kluczem głównym, decyduje programista tworzący bazę. Klucze pozwalają zaś na budowanie powiązań
+(relacji) między tabelami.
+
+### Relacje
+
+Dane w bazie są przechowywane tabelach. Tabele, żeby były użyteczne, muszą być ze sobą w jakiś sposób powiązane. Jeśli
+prowadzimy sklep internetowy to tabela zamówień i tabela klientów, aby było wiadomo, które zamówienie złożył dany
+klient, muszą być ze sobą w jakieś relacji. Realizuje się to przez wprowadzenie do jednej z tabeli tzw. klucza obcego.
+Np. w tabeli klientów wprowadza się klucz identyfikujący klientów, a w tabeli zamówień oprócz klucza identyfikującego
+zamówienia wprowadza się klucz obcy, który jest kluczem głównym z tabeli klientów. W ten sposób między tymi tabelami
+powstanie relacja.
+
+W teorii projektowania relacyjnych baz danych wyróżnia się trzy podstawowe typy relacji:
+
+* jeden do jednego — jednemu rekordowi (wierszowi) z tabeli X odpowiada dokładnie jeden rekord z tabeli Y.
+* jeden do wielu — jednemu rekordowi (wierszowi) z tabeli X może odpowiadać jeden lub więcej rekordów z tabeli Y, ale
+  jednemu wierszowi z tabeli Y odpowiada dokładnie jeden wiersz z tabeli X.
+* wiele do wielu — jednemu wierszowi z tabeli X może odpowiadać wiele wierszy z tabeli Y oraz jednemu wierszowi z tabeli
+  Y może odpowiadać wiele wierszy z tabeli X.
+
+W przypadku wystąpienia relacji wiele do wielu należy stosować dodatkową tabelę pomocniczą łączącą tabele, między
+którymi relacja występuje. W takiej tabeli wprowadza się klucze główne z tabel, które chcemy powiązać, które 
+są kluczami obcymi, ale łącznie stanowią klucz główny, który jednoznacznie identyfikuje dany wiersz tabeli 
+pomocniczej. Prawidłowe rozwiązanie jest zatem takie jak na rysunku. 
+
 ## Jak projektować tabele bazy
 
+<!-- TODO -->
+
 ## Tworzenie i usuwanie baz
+### Łączenie z serwerem
+
 
 ## Zarzadzanie kontami użytkowników
 
@@ -72,22 +126,26 @@ W SQL nie są rozróżniane duże i małe litery, można ich więc używać zami
 * UPDATE
 * DELETE
 
-
 ### SELECT &mash; wyciąganie danych
+
 ```sql
-SELECT 
-           select_expr [, select_expr …] 
-       FROM 
-           tbl_name 
-       [WHERE where_condition]
-       [ORDER BY {col_name | expr | position} [ASC | DESC], …]
-       [LIMIT {[offset,] row_count | row_count OFFSET offset}]
+SELECT select_expr[,
+       select_expr …]
+FROM
+    tbl_name
+    [
+WHERE where_condition]
+    [
+ORDER BY {col_name | expr | position} [ASC |
+DESC], …]
+    [LIMIT {[offset,] row_count | row_count OFFSET offset}]
 ```
 
 [Pełną konstrukcję na stronie](https://dev.mysql.com/doc/refman/8.0/en/select.html)
 
 ```sql
-SELECT * FROM tableName # wszystkie rekordy z tabeli
+SELECT *
+FROM tableName # wszystkie rekordy z tabeli
 ```
 
 ```sql
@@ -166,7 +224,8 @@ Dozwolone są także modyfikatory:
 Przykład
 
 ```SQL
-TINYINT UNSIGNED # w kolumnach będzie można zapisywać wartości od 0 do 255
+TINYINT
+UNSIGNED # w kolumnach będzie można zapisywać wartości od 0 do 255
 
 TINYINT(4) ZEROFILL
 # W kolumny można zapisywać wartości od 0 do 255, ale będą one wyświetlane w postaci czteroznakowej, 
@@ -230,8 +289,8 @@ W przypadku typu TIME dopuszczalne są następujące formaty:
   warianty skrócone w następujących postaciach: GG : MM : SS , GG : MM , D GG : MM , D GG i SS . Poprawne są zatem
   zapisy: 12:52:24 , 12:52 , 24 .
 
-* Ciąg znaków GGMMSS. Pomiędzy składowymi nie mogą występować żadne znaki przestankowe, cały ciąg musi zaś
-  reprezentować poprawny czas. Poprawne są zatem zapisy: 125224 (co oznacza 12:52:24), 182931 (co oznacza 18:29:31).
+* Ciąg znaków GGMMSS. Pomiędzy składowymi nie mogą występować żadne znaki przestankowe, cały ciąg musi zaś reprezentować
+  poprawny czas. Poprawne są zatem zapisy: 125224 (co oznacza 12:52:24), 182931 (co oznacza 18:29:31).
 
 * Wartość liczbowa zapisana jako GGMMSS, o ile reprezentuje poprawny czas. Możliwe są również alternatywne zapisy w
   postaci: SS, MMSS, GGMMSS
@@ -286,8 +345,7 @@ Typ SET jest również typem wyliczeniowym, definiowanym analogicznie do typu EN
 CREATE TABLE nazwa_tabeli
 (
     nazwa_kolumny_1 typ_kolumny_1 [ atrybuty ],
-    nazwa_kolumny_2 typ_kolumny_2 [ atrybuty ], .
-    .
+    nazwa_kolumny_2 typ_kolumny_2 [ atrybuty ], . .
     .
     nazwa_kolumny_n
     typ_kolumny_n
